@@ -13,6 +13,8 @@ import {MaterialIcons} from "@expo/vector-icons";
 import { RootStackParamList } from "../AppNavigation";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { themas } from "../../global/themes";
+import { db } from "../../config/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 type Props = DrawerScreenProps<RootStackParamList>;
 
@@ -20,16 +22,23 @@ export default function RegistroReclamacao({navigation}: Props) {
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
 
-    function handleRegistro() {
+    async function handleRegistro() {
         try {
             if (!titulo || !descricao) {
                 return Alert.alert("Preencha todos os campos");
             }
-            Alert.alert("Reclamação registrada com sucesso!", "", [
-                { text: "OK", onPress: () => navigation.navigate('Home') }
-            ]);
+        await addDoc(collection(db, "reclamacoes"), {
+            titulo,
+            descricao,
+            criadoEm: new Date(),
+        });
+
+        Alert.alert("Reclamação registrada com sucesso!");
+        setTitulo("");
+        setDescricao("");
         } catch (error) {
             console.log("Erro ao registrar reclamação: ", error);
+            Alert.alert("Erro ao registrar reclamação", "Tente novamente mais tarde.");
         }
     }
 
