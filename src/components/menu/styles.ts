@@ -14,4 +14,11 @@ export const style = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
     },
+    menuTitle:{
+        fontSize: 20,
+        fontWeight: "bold",
+        color: themas.colors.primary,
+        textAlign: "center",
+        marginBottom: 10,
+    }
 });

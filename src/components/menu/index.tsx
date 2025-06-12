@@ -32,5 +32,6 @@ export default function Menu() {
             </TouchableOpacity>
             
         </View>
+        
     );
 }
