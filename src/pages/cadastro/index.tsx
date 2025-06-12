@@ -8,8 +8,12 @@ import {
 } from "react-native";
 import {MaterialIcons} from "@expo/vector-icons"
 import {style} from "./styles"
+import { RootStackParamList } from "../AppNavigation";
+import { DrawerScreenProps } from "@react-navigation/drawer";
 
-export default function Cadastro(){
+type Props = DrawerScreenProps<RootStackParamList, 'Cadastro'>;
+
+export default function Cadastro({navigation}: Props) {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -19,7 +23,9 @@ export default function Cadastro(){
             if(!nome || !email || !senha){
                 return Alert.alert("Preencha todos os campos");
             }
-            Alert.alert("Cadastro realizado com sucesso!");
+            Alert.alert("Cadastro realizado com sucesso!", "", [
+                {text: "OK", onPress: () => navigation.navigate('Home')}
+            ]);
         }catch(error){
             console.log("Erro ao cadastrar: ", error);
         }

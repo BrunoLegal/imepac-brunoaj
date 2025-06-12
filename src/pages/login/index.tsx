@@ -12,16 +12,11 @@ import {MaterialIcons} from '@expo/vector-icons'
 import Logo from '../../assets/logo-login.png'
 import { themas } from "../../global/themes";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {RootStackParamList} from "../AppNavigation" 
+import { DrawerScreenProps } from "@react-navigation/drawer";
 
 
-
-
-type RootStackParamList = {
-    Login: undefined;
-    Cadastro: undefined;
-}
-
-type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+type Props = DrawerScreenProps<RootStackParamList, 'Login'>;
 
 
 
@@ -35,7 +30,9 @@ export default function Login({navigation}:Props){
                 return Alert.alert("Preencha todos os campos");
             }
             //lógica de autenticação
-            Alert.alert("Login realizado com sucesso!");
+            Alert.alert("Login realizado com sucesso!", "", [
+                {text: "OK", onPress: () => navigation.navigate('Home') }
+            ]);
         }catch(error){
             console.log("Erro ao fazer login: ", error);
         }
