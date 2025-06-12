@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import { style } from "./style";
 
 export default function ListaReclamacao() {
   const [reclamacoes, setReclamacoes] = useState<any[]>([]);
@@ -34,13 +35,13 @@ export default function ListaReclamacao() {
   }
 
   return (
-    <View style={{ flex: 1, padding: 16 }}>
+    <View style={style.container}>
       <Text style={{ fontSize: 20, marginBottom: 16 }}>Lista de Reclamações</Text>
       <FlatList
         data={reclamacoes}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <View style={{ marginBottom: 16, padding: 12, backgroundColor: "#eee", borderRadius: 8 }}>
+          <View style={style.listBox}>
             <Text style={{ fontWeight: "bold" }}>{item.titulo}</Text>
             <Text>{item.descricao}</Text>
             <Text style={{ fontSize: 12, color: "#888" }}>
