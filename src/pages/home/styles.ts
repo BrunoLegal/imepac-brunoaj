@@ -16,9 +16,9 @@ export const style = StyleSheet.create({
         width:"100%"
     },
     boxMid:{
-        height:Dimensions.get("window").height/3,
+        padding:30,
         width:"100%",
-        marginLeft:20
+        alignItems:"center",
     },
     boxBottom:{
         alignItems:"center",

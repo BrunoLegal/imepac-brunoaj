@@ -18,10 +18,15 @@ export default function handleHome() {
     return (
         <View style={style.container}>
             <Menu />
-            <Text>Home</Text>
-            <View style={style.boxBottom}>
+        
+            <View style={style.boxMid}>
                 <TouchableOpacity style={style.button} onPress={() => navigation.navigate("RegistroReclamacao")}>
                     <Text>Cadastrar Reclamação</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={style.boxBottom}>
+                <TouchableOpacity style={style.button} onPress={() => navigation.navigate("ListaReclamacao")}>
+                    <Text>Listar Reclamações</Text>
                 </TouchableOpacity>
             </View>
 
