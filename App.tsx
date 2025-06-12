@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Login from './src/pages/login';
-import Cadastro from './src/pages/cadastro';
+import React from 'react';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { createStackNavigator } from '@react-navigation/stack';
+import AppNavigation from './src/pages/AppNavigation';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Cadastro />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AppNavigation />
+    </GestureHandlerRootView>
   );
 }
 

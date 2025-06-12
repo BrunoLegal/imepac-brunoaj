@@ -4,15 +4,42 @@ import {
     View,
     Image,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
  } from "react-native";
 import {style} from './styles';
 import {MaterialIcons} from '@expo/vector-icons'
 import Logo from '../../assets/logo-login.png'
 import { themas } from "../../global/themes";
-export default function Login(){
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+
+
+
+
+type RootStackParamList = {
+    Login: undefined;
+    Cadastro: undefined;
+}
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
+
+
+
+export default function Login({navigation}:Props){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
+    function getLogin(){
+        try{
+            if(!email || !senha){
+                return Alert.alert("Preencha todos os campos");
+            }
+            //lógica de autenticação
+            Alert.alert("Login realizado com sucesso!");
+        }catch(error){
+            console.log("Erro ao fazer login: ", error);
+        }
+    }
     return(
         <View style={style.container}>
             <View style={style.boxTop}>
@@ -40,8 +67,12 @@ export default function Login(){
                 </View>
             </View>
             <View style={style.boxBottom}>
-                <TouchableOpacity style = {style.button}>
+                <TouchableOpacity style = {style.button} onPress={getLogin}>
                     <Text>Entrar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+                    <Text>Não tem uma conta? Cadastre-se</Text>
                 </TouchableOpacity>
             </View>
         </View>
