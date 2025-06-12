@@ -24,7 +24,7 @@ export default function AppNavigation() {
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Cadastro" component={Cadastro} />
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="RegistroReclamacao" component={RegistroReclamacao} />
+                <Stack.Screen name="RegistroReclamacao" component={RegistroReclamacao} options={{title: "Registro Reclamação"}} />
             </Stack.Navigator>
         </NavigationContainer>
     );
