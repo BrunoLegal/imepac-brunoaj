@@ -10,9 +10,9 @@ export const style = StyleSheet.create({
         backgroundColor:themas.colors.bgColor
     },
     boxTop:{
+        paddingTop:30,
         alignItems:"center",
         justifyContent: "center",
-        height:Dimensions.get("window").height/3,
         width:"100%"
     },
     boxMid:{

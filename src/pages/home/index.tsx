@@ -13,20 +13,25 @@ import { useNavigation } from "@react-navigation/native";
 
 type NavigationProps = DrawerScreenProps<RootStackParamList>;
 
-export default function handleHome() {
+export default function HandleHome() {
     const navigation = useNavigation<NavigationProps["navigation"]>();
     return (
         <View style={style.container}>
             <Menu />
         
-            <View style={style.boxMid}>
+            <View style={style.boxTop}>
                 <TouchableOpacity style={style.button} onPress={() => navigation.navigate("RegistroReclamacao")}>
                     <Text>Cadastrar Reclamação</Text>
                 </TouchableOpacity>
             </View>
-            <View style={style.boxBottom}>
+            <View style={style.boxMid}>
                 <TouchableOpacity style={style.button} onPress={() => navigation.navigate("ListaReclamacao")}>
                     <Text>Listar Reclamações</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={style.boxBottom}>
+                <TouchableOpacity style={style.button} onPress={() => navigation.navigate("FecharReclamacao")}>
+                    <Text>Fechar Reclamações</Text>
                 </TouchableOpacity>
             </View>
 
